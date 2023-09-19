@@ -21,13 +21,11 @@ template <class T>
 class Sorts
 {
 private:
-    // Swap the values of two pointers
-    void swap(T *, T *);
-    // Merge sort algorithm
-    void mergeSort(vector<T> &, int, int);
-    void merge(vector<T> &, int, int, int);
+    void swap(T *, T *);                    // Swap function
+    void mergeSort(vector<T> &, int, int);  // Merge sort algorithm
+    void merge(vector<T> &, int, int, int); // Merge two subarrays
 public:
-    void sort(vector<T> &);
+    void sort(vector<T> &); // Sorts a vector with the merge sort algorithm
 };
 
 #endif /* SORTS_H */
