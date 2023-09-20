@@ -59,7 +59,9 @@ public:
 
     // Operators
     bool operator<(Airport);  // Compare if an airport is less than another (by IATA code)
+    bool operator<=(Airport); // Compare if an airport is less than or equal to another (by IATA code)
     bool operator>(Airport);  // Compare if an airport is greater than another (by IATA code)
+    bool operator>=(Airport); // Compare if an airport is greater than or equal to another (by IATA code)
     bool operator==(Airport); // Compare two airports (by IATA code)
     bool operator!=(Airport); // Compare two airports (by IATA code)
 };

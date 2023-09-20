@@ -240,9 +240,10 @@ void Airport::setAltitude(double altitude)
 
 string Airport::toString()
 {
-    // 
+    // Create the string
     string str = "";
 
+    // Add the data
     str += "Name: " + name + "\n";
     str += "City: " + city + "\n";
     str += "Country: " + country + "\n";
@@ -251,6 +252,7 @@ string Airport::toString()
     str += "Longitude: " + to_string(longitude) + "\n";
     str += "Altitude: " + to_string(altitude) + "\n";
 
+    // Return the string
     return str;
 }
 
@@ -266,7 +268,56 @@ string Airport::toString()
 
 bool Airport::operator<(Airport airport)
 {
-    return IATA < airport.getIATA();
+    // Get the three characters of the IATA code as integers
+    int iata1[3] = {IATA[0], IATA[1], IATA[2]};
+    int iata2[3] = {airport.getIATA()[0], airport.getIATA()[1], airport.getIATA()[2]};
+
+    // Compare the IATA codes
+    for (int i = 0; i < 3; i++)
+    {
+        if (iata1[i] < iata2[i])
+        {
+            return true;
+        }
+        else if (iata1[i] > iata2[i])
+        {
+            return false;
+        }
+    }
+
+    // Else, the IATA codes are equal
+    return false;
+}
+
+/**
+ * @brief Compare if an airport is less than or equal to another (by IATA code)
+ *
+ * @param airport
+ * @return true
+ * @return false
+ */
+
+bool Airport::operator<=(Airport airport)
+{
+    // Get the three characters of the IATA code as integers
+    int iata1[3] = {IATA[0], IATA[1], IATA[2]};
+    int iata2[3] = {airport.getIATA()[0], airport.getIATA()[1], airport.getIATA()[2]};
+
+    // Compare the IATA codes
+    for (int i = 0; i < 3; i++)
+    {
+        if (iata1[i] < iata2[i])
+        {
+            return true;
+        }
+        else if (iata1[i] > iata2[i])
+        {
+            return false;
+        }
+    }
+
+    // Else, the IATA codes are equal
+    return true;
 }
 
 /**
@@ -279,7 +330,56 @@ bool Airport::operator<(Airport airport)
 
 bool Airport::operator>(Airport airport)
 {
-    return IATA > airport.getIATA();
+    // Get the three characters of the IATA code as integers
+    int iata1[3] = {IATA[0], IATA[1], IATA[2]};
+    int iata2[3] = {airport.getIATA()[0], airport.getIATA()[1], airport.getIATA()[2]};
+
+    // Compare the IATA codes
+    for (int i = 0; i < 3; i++)
+    {
+        if (iata1[i] > iata2[i])
+        {
+            return true;
+        }
+        else if (iata1[i] < iata2[i])
+        {
+            return false;
+        }
+    }
+
+    // Else, the IATA codes are equal
+    return false;
+}
+
+/**
+ * @brief Compare if an airport is greater than or equal to another (by IATA code)
+ *
+ * @param airport
+ * @return true
+ * @return false
+ */
+
+bool Airport::operator>=(Airport airport)
+{
+    // Get the three characters of the IATA code as integers
+    int iata1[3] = {IATA[0], IATA[1], IATA[2]};
+    int iata2[3] = {airport.getIATA()[0], airport.getIATA()[1], airport.getIATA()[2]};
+
+    // Compare the IATA codes
+    for (int i = 0; i < 3; i++)
+    {
+        if (iata1[i] > iata2[i])
+        {
+            return true;
+        }
+        else if (iata1[i] < iata2[i])
+        {
+            return false;
+        }
+    }
+
+    // Else, the IATA codes are equal
+    return true;
 }
 
 /**
@@ -292,6 +392,7 @@ bool Airport::operator>(Airport airport)
 
 bool Airport::operator==(Airport airport)
 {
+    // Compare the IATA codes
     return IATA == airport.getIATA();
 }
 
@@ -305,6 +406,7 @@ bool Airport::operator==(Airport airport)
 
 bool Airport::operator!=(Airport airport)
 {
+    // Compare the IATA codes
     return IATA != airport.getIATA();
 }
 
