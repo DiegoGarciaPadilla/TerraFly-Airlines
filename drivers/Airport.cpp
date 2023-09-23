@@ -35,7 +35,6 @@ Airport::Airport()
     IATA = "";
     latitude = 0;
     longitude = 0;
-    altitude = 0;
 }
 
 /**
@@ -47,10 +46,9 @@ Airport::Airport()
  * @param IATA
  * @param latitude
  * @param longitude
- * @param altitude
  */
 
-Airport::Airport(string name, string city, string country, string IATA, double latitude, double longitude, double altitude)
+Airport::Airport(string name, string city, string country, string IATA, double latitude, double longitude)
 {
     this->name = name;
     this->city = city;
@@ -58,7 +56,6 @@ Airport::Airport(string name, string city, string country, string IATA, double l
     this->IATA = IATA;
     this->latitude = latitude;
     this->longitude = longitude;
-    this->altitude = altitude;
 }
 
 // Destructor
@@ -140,17 +137,6 @@ double Airport::getLongitude()
     return longitude;
 }
 
-/**
- * @brief Get the altitude of the airport
- *
- * @return double
- */
-
-double Airport::getAltitude()
-{
-    return altitude;
-}
-
 // Setters
 
 /**
@@ -219,17 +205,6 @@ void Airport::setLongitude(double longitude)
     this->longitude = longitude;
 }
 
-/**
- * @brief Set the altitude of the airport
- *
- * @param altitude
- */
-
-void Airport::setAltitude(double altitude)
-{
-    this->altitude = altitude;
-}
-
 // Methods
 
 /**
@@ -250,7 +225,6 @@ string Airport::toString()
     str += "IATA: " + IATA + "\n";
     str += "Latitude: " + to_string(latitude) + "\n";
     str += "Longitude: " + to_string(longitude) + "\n";
-    str += "Altitude: " + to_string(altitude) + "\n";
 
     // Return the string
     return str;

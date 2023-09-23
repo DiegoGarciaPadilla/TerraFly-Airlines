@@ -21,17 +21,17 @@ using namespace std;
 class Airport
 {
 private:
+    // Attributes
     string name;      // Name of the airport
     string city;      // City of the airport
     string country;   // Country of the airport
     string IATA;      // IATA code of the airport
     double latitude;  // Latitude of the airport
     double longitude; // Longitude of the airport
-    double altitude;  // Altitude of the airport
 public:
     // Constructors
     Airport();                                                       // Construct a new Airport:: Airport object
-    Airport(string, string, string, string, double, double, double); // Construct a new Airport:: Airport object
+    Airport(string, string, string, string, double, double); // Construct a new Airport:: Airport object
 
     // Destructor
     ~Airport(); // Destruct the Airport:: Airport object
@@ -43,7 +43,6 @@ public:
     string getIATA();      // Get the IATA code of the airport
     double getLatitude();  // Get the latitude of the airport
     double getLongitude(); // Get the longitude of the airport
-    double getAltitude();  // Get the altitude of the airport
 
     // Setters
     void setName(string);      // Set the name of the airport
@@ -52,7 +51,6 @@ public:
     void setIATA(string);      // Set the IATA code of the airport
     void setLatitude(double);  // Set the latitude of the airport
     void setLongitude(double); // Set the longitude of the airport
-    void setAltitude(double);  // Set the altitude of the airport
 
     // Methods
     string toString(); // Convert the object to a string

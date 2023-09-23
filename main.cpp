@@ -21,14 +21,13 @@ using namespace std;
 
 int main()
 {
-    Airport a1("John F. Kennedy International Airport", "New York", "United States", "JFK", 40.63980103, -73.77890015, 13);
-    Airport a2("San Francisco International Airport", "San Francisco", "United States", "SFO", 37.61899948, -122.375, 13);
-    Airport a3("Aeropuerto Internacional Benito Juarez", "Mexico City", "Mexico", "MEX", 19.4363, -99.072098, 13);
+    Airport a1("John F. Kennedy International Airport", "New York", "United States", "JFK", 40.63980103, -73.77890015);
+    Airport a2("San Francisco International Airport", "San Francisco", "United States", "SFO", 37.61899948, -122.375);
+    Airport a3("Aeropuerto Internacional Benito Juarez", "Mexico City", "Mexico", "MEX", 19.4363, -99.072098);
+    Airport a4("Shanghai Pudong International Airport", "Shanghai", "China", "PVG", 31.14340019, 121.8050003);
+    Airport a5("London Heathrow Airport", "London", "United Kingdom", "LHR", 51.4706, -0.461941);
 
-    vector<Airport> airports;
-    airports.push_back(a1);
-    airports.push_back(a2);
-    airports.push_back(a3);
+    vector<Airport> airports = {a1, a2, a3, a4, a5};
 
     cout << "Unsorted airports:" << endl;
     for (int i = 0; i < airports.size(); i++)
