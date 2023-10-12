@@ -16,6 +16,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <unordered_map>
 
 using namespace std;
 
@@ -36,7 +37,7 @@ Airport::Airport()
     IATA = "";
     latitude = 0;
     longitude = 0;
-    connections = vector<Airport *>();
+    connections = unordered_map<Airport *, double>();
 }
 
 /**
@@ -58,7 +59,7 @@ Airport::Airport(string name, string city, string country, string IATA, double l
     this->IATA = IATA;
     this->latitude = latitude;
     this->longitude = longitude;
-    connections = vector<Airport *>();
+    connections = unordered_map<Airport *, double>();
 }
 
 // Destructor
@@ -141,10 +142,10 @@ double Airport::getLongitude()
 /**
  * @brief Get the connections of the airport
  *
- * @return vector<Airport *>
+ * @return unordered_map<Airport *, double>
  */
 
-vector<Airport *> Airport::getConnections()
+unordered_map<Airport *, double> Airport::getConnections()
 {
     return connections;
 }
@@ -223,7 +224,7 @@ void Airport::setLongitude(double longitude)
  * @param connections
  */
 
-void Airport::setConnections(vector<Airport *> connections)
+void Airport::setConnections(unordered_map<Airport *, double> connections)
 {
     this->connections = connections;
 }
@@ -251,9 +252,9 @@ string Airport::toString()
 
     // Add the connections
     str += "Connections: \n";
-    for (int i = 0; i < connections.size(); i++)
+    for (auto connection : connections)
     {
-        str += " - " + connections[i]->getIATA() + "\n";
+        str += "\t" + connection.first->getIATA() + " (" + to_string(connection.second) + " km)\n";
     }
 
     // Return the string
