@@ -18,16 +18,24 @@ using namespace std;
 
 #include "drivers/Airport.cpp"
 #include "drivers/Sorts.cpp"
+#include "drivers/CSVReader.cpp"
 
 int main()
 {
-    Airport a1("John F. Kennedy International Airport", "New York", "United States", "JFK", 40.63980103, -73.77890015);
-    Airport a2("San Francisco International Airport", "San Francisco", "United States", "SFO", 37.61899948, -122.375);
-    Airport a3("Aeropuerto Internacional Benito Juarez", "Mexico City", "Mexico", "MEX", 19.4363, -99.072098);
-    Airport a4("Shanghai Pudong International Airport", "Shanghai", "China", "PVG", 31.14340019, 121.8050003);
-    Airport a5("London Heathrow Airport", "London", "United Kingdom", "LHR", 51.4706, -0.461941);
+    // Get CSVRreader object
+    CSVReader reader;
 
-    vector<Airport> airports = {a1, a2, a3, a4, a5};
+    // Get data from CSV file
+    vector<vector<string>> data = reader.read("data/airports.csv", ',');
+
+    // Create a vector of airports
+    vector<Airport> airports;
+
+    // Fill the vector of airports
+    for (int i = 0; i < data.size(); i++)
+    {
+        airports.push_back(Airport(data[i][0], data[i][1], data[i][2], data[i][3], stod(data[i][4]), stod(data[i][5])));
+    }
 
     cout << "Unsorted airports:" << endl;
     for (int i = 0; i < airports.size(); i++)
