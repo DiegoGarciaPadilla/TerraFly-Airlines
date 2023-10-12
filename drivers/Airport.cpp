@@ -291,6 +291,53 @@ double Airport::distanceTo(Airport &destiny)
     return distance;
 }
 
+// Graph methods
+
+/**
+ * @brief Add a connection to the airport
+ *
+ * @param airport
+ */
+
+void Airport::addConnection(Airport *airport)
+{
+    // Check if the airport is already connected
+    if (connections.find(airport) != connections.end())
+    {
+        // Print an error message
+        cout << "The airport is already connected" << endl;
+    }
+    else
+    {
+        // Calculate the distance between the airports
+        double distance = distanceTo(*airport);
+
+        // Add the connection to the airport
+        connections.insert({airport, distance});
+    }
+}
+
+/**
+ * @brief Remove a connection from the airport
+ *
+ * @param airport
+ */
+
+void Airport::removeConnection(Airport *airport)
+{
+    // Check if the airport is connected
+    if (connections.find(airport) != connections.end())
+    {
+        // Remove the connection from the airport
+        connections.erase(airport);
+    }
+    else
+    {
+        // Print an error message
+        cout << "The airport is not connected" << endl;
+    }
+}
+
 // Operators
 
 /**
