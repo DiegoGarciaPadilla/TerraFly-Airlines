@@ -35,6 +35,7 @@ Airport::Airport()
     IATA = "";
     latitude = 0;
     longitude = 0;
+    connections = vector<Airport *>();
 }
 
 /**
@@ -56,6 +57,7 @@ Airport::Airport(string name, string city, string country, string IATA, double l
     this->IATA = IATA;
     this->latitude = latitude;
     this->longitude = longitude;
+    connections = vector<Airport *>();
 }
 
 // Destructor
@@ -67,6 +69,15 @@ Airport::Airport(string name, string city, string country, string IATA, double l
 
 Airport::~Airport()
 {
+    // Delete the connections
+    for (int i = 0; i < connections.size(); i++)
+    {
+        delete connections[i];
+    }
+    connections.clear();
+
+    // Delete this
+    delete this;
 }
 
 // Getters
@@ -137,6 +148,17 @@ double Airport::getLongitude()
     return longitude;
 }
 
+/**
+ * @brief Get the connections of the airport
+ *
+ * @return vector<Airport *>
+ */
+
+vector<Airport *> Airport::getConnections()
+{
+    return connections;
+}
+
 // Setters
 
 /**
@@ -205,6 +227,17 @@ void Airport::setLongitude(double longitude)
     this->longitude = longitude;
 }
 
+/**
+ * @brief Set the connections of the airport
+ *
+ * @param connections
+ */
+
+void Airport::setConnections(vector<Airport *> connections)
+{
+    this->connections = connections;
+}
+
 // Methods
 
 /**
@@ -218,13 +251,20 @@ string Airport::toString()
     // Create the string
     string str = "";
 
-    // Add the data
+    // Add the airport information
     str += "Name: " + name + "\n";
     str += "City: " + city + "\n";
     str += "Country: " + country + "\n";
     str += "IATA: " + IATA + "\n";
     str += "Latitude: " + to_string(latitude) + "\n";
     str += "Longitude: " + to_string(longitude) + "\n";
+
+    // Add the connections
+    str += "Connections: \n";
+    for (int i = 0; i < connections.size(); i++)
+    {
+        str += " - " + connections[i]->getIATA() + "\n";
+    }
 
     // Return the string
     return str;
