@@ -56,7 +56,8 @@ public:
     void setConnections(vector<Airport *>); // Set the connections of the airport
 
     // Methods
-    string toString(); // Convert the object to a string
+    string toString();            // Convert the object to a string
+    double distanceTo(Airport &); // Calculate the distance to another airport
 
     // Operators
     bool operator<(Airport);  // Compare if an airport is less than another (by IATA code)

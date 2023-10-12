@@ -15,6 +15,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -67,18 +68,7 @@ Airport::Airport(string name, string city, string country, string IATA, double l
  *
  */
 
-Airport::~Airport()
-{
-    // Delete the connections
-    for (int i = 0; i < connections.size(); i++)
-    {
-        delete connections[i];
-    }
-    connections.clear();
-
-    // Delete this
-    delete this;
-}
+Airport::~Airport() {}
 
 // Getters
 
@@ -268,6 +258,36 @@ string Airport::toString()
 
     // Return the string
     return str;
+}
+
+/**
+ * @brief Calculate the distance to another airport
+ *
+ * @param destiny
+ * @return double
+ */
+
+double Airport::distanceTo(Airport &destiny)
+{
+    // Get the latitude and longitude of the destiny
+    double lat2 = destiny.getLatitude();
+    double lon2 = destiny.getLongitude();
+
+    // Convert the latitude and longitude to radians
+    double lat1 = latitude * M_PI / 180;
+    double lon1 = longitude * M_PI / 180;
+
+    // Calculate the difference between the latitudes and longitudes
+    double dlat = lat2 - lat1;
+    double dlon = lon2 - lon1;
+
+    // Calculate the distance (Haversine formula)
+    double a = pow(sin(dlat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dlon / 2), 2); // Square of half the chord length
+    double c = 2 * atan2(sqrt(a), sqrt(1 - a));                                       // Angle between the two points
+    double distance = 6371 * c;                                                       // Earth radius = 6371 km * angle
+
+    // Return the distance in kilometers
+    return distance;
 }
 
 // Operators
