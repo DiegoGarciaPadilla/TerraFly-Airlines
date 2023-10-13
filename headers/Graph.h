@@ -15,31 +15,39 @@
 #include <vector>
 #include <unordered_map>
 
+using namespace std;
+
 #include "../drivers/Airport.cpp" // Friend class
 
 class Graph
 {
 private:
     // Attributes
-    std::unordered_map<std::string, Airport> airports; // Airports of the graph
+
+    unordered_map<string, Airport> airports; // Airports of the graph
 public:
     // Constructors
+
     Graph(); // Construct a new Graph:: Graph object
 
     // Destructor
+
     ~Graph(); // Destruct the Graph:: Graph object
 
     // Methods
-    bool findAirport(std::string);                     // Find an airport in the graph
-    void addAirport(Airport);                          // Add an airport to the graph
-    void removeAirport(std::string);                   // Remove an airport from the graph
-    void addConnection(std::string, std::string, int); // Add a connection to the graph
-    void removeConnection(std::string, std::string);   // Remove a connection from the graph
+
+    bool findAirport(string);              // Find an airport in the graph
+    void addAirport(Airport);              // Add an airport to the graph
+    void removeAirport(string);            // Remove an airport from the graph
+    void addConnection(string, string);    // Add a connection to the graph
+    void removeConnection(string, string); // Remove a connection from the graph
 
     // Print methods
+
     string toString(); // Convert the object to a string
 
     // Friend classes
+
     friend class Airport;
 };
 

@@ -4,9 +4,9 @@
  * @brief Implementation of the Graph class
  * @version 0.1
  * @date 2023-10-12
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 #ifndef GRAPH_CPP
@@ -24,7 +24,7 @@ using namespace std;
 
 /**
  * @brief Construct a new Graph:: Graph object
- * 
+ *
  */
 
 Graph::Graph()
@@ -36,7 +36,7 @@ Graph::Graph()
 
 /**
  * @brief Destroy the Graph:: Graph object
- * 
+ *
  */
 
 Graph::~Graph()
@@ -52,10 +52,10 @@ Graph::~Graph()
 
 /**
  * @brief Find an airport in the graph
- * 
- * @param IATA 
- * @return true 
- * @return false 
+ *
+ * @param IATA
+ * @return true
+ * @return false
  */
 
 bool Graph::findAirport(string IATA)
@@ -75,8 +75,8 @@ bool Graph::findAirport(string IATA)
 
 /**
  * @brief Add an airport to the graph
- * 
- * @param airport 
+ *
+ * @param airport
  */
 
 void Graph::addAirport(Airport airport)
@@ -96,8 +96,8 @@ void Graph::addAirport(Airport airport)
 
 /**
  * @brief Remove an airport from the graph
- * 
- * @param IATA 
+ *
+ * @param IATA
  */
 
 void Graph::removeAirport(string IATA)
@@ -117,50 +117,101 @@ void Graph::removeAirport(string IATA)
 
 /**
  * @brief Add a connection to the graph
- * 
- * @param IATA1 
- * @param IATA2 
- * @param distance 
+ *
+ * @param IATA1
+ * @param IATA2
  */
 
-void Graph::addConnection(string IATA1, string IATA2, int distance)
+void Graph::addConnection(string IATA1, string IATA2)
 {
-    // Check if the airports are in the graph
-    if (findAirport(IATA1) && findAirport(IATA2))
-    {
-        // Add the connection to the airports
-        airports[IATA1].addConnection(&airports[IATA2]);
-        airports[IATA2].addConnection(&airports[IATA1]);
-    }
-    else
+    // Check if the airports are NOT in the graph
+    if (!findAirport(IATA1) || !findAirport(IATA2))
     {
         // Print an error message
         cout << "The airports are not in the graph" << endl;
+        return;
     }
+
+    // Check if the airports are the same
+    if (IATA1 == IATA2)
+    {
+        // Print an error message
+        cout << "The airports are the same" << endl;
+        return;
+    }
+
+    // Check if the airports are already connected
+    if (airports[IATA1].findConnection(&airports[IATA2]))
+    {
+        // Print an error message
+        cout << "The airports are already connected" << endl;
+        return;
+    }
+
+    // Add the connection to the graph
+    airports[IATA1].addConnection(&airports[IATA2]);
+    airports[IATA2].addConnection(&airports[IATA1]);
 }
 
 /**
  * @brief Remove a connection from the graph
- * 
- * @param IATA1 
- * @param IATA2 
+ *
+ * @param IATA1
+ * @param IATA2
  */
 
 void Graph::removeConnection(string IATA1, string IATA2)
 {
-    // Check if the airports are in the graph
-    if (findAirport(IATA1) && findAirport(IATA2))
-    {
-        // Remove the connection from the airports
-        airports[IATA1].removeConnection(&airports[IATA2]);
-        airports[IATA2].removeConnection(&airports[IATA1]);
-    }
-    else
+    // Check if the airports are NOT in the graph
+    if (!findAirport(IATA1) || !findAirport(IATA2))
     {
         // Print an error message
         cout << "The airports are not in the graph" << endl;
+        return;
     }
+
+    // Check if the airports are the same
+    if (IATA1 == IATA2)
+    {
+        // Print an error message
+        cout << "The airports are the same" << endl;
+        return;
+    }
+
+    // Check if the airports are NOT connected
+    if (!airports[IATA1].findConnection(&airports[IATA2]))
+    {
+        // Print an error message
+        cout << "The airports are not connected" << endl;
+        return;
+    }
+
+    // Remove the connection from the graph
+    airports[IATA1].removeConnection(&airports[IATA2]);
+    airports[IATA2].removeConnection(&airports[IATA1]);
 }
 
+// Print methods
+
+/**
+ * @brief Convert the object to a string
+ *
+ * @return string
+ */
+
+string Graph::toString()
+{
+    // Create the string
+    string str = "";
+
+    // Traverse the airports
+    for (auto it = airports.begin(); it != airports.end(); it++)
+    {
+        // Add the airport to the string
+        str += it->second.toString() + "\n";
+    }
+
+    return str;
+}
 
 #endif // GRAPH_CPP
