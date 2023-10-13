@@ -338,6 +338,20 @@ void Airport::removeConnection(Airport *airport)
     }
 }
 
+/**
+ * @brief Find a connection in the airport
+ *
+ * @param airport
+ * @return true
+ * @return false
+ */
+
+bool Airport::findConnection(Airport *airport)
+{
+    // Check if the airport is connected
+    return connections.find(airport) != connections.end();
+}
+
 // Operators
 
 /**
