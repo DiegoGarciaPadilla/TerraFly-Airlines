@@ -51,6 +51,40 @@ Graph::~Graph()
 // Methods
 
 /**
+ * @brief Initialize the graph
+ *
+ */
+
+void Graph::initialize()
+{
+    // Get CSVRreader object
+    CSVReader reader;
+
+    // Get data from CSV file
+    vector<vector<string>> data = reader.read("data/airports.csv", ',');
+
+    // Fill the vector of airports
+    for (int i = 0; i < data.size(); i++)
+    {
+        // Get the airport
+        Airport airport = Airport(data[i][0], data[i][1], data[i][2], data[i][3], stod(data[i][4]), stod(data[i][5]));
+
+        // Add the airport to the graph
+        addAirport(airport);
+    }
+
+    // Get connections from CSV file
+    vector<vector<string>> cData = reader.read("data/connections.csv", ',');
+
+    // Fill the connections
+    for (int i = 0; i < cData.size(); i++)
+    {
+        // Add the connection to the graph
+        addConnection(cData[i][0], cData[i][1]);
+    }
+}
+
+/**
  * @brief Find an airport in the graph
  *
  * @param IATA
@@ -141,7 +175,7 @@ void Graph::addConnection(string IATA1, string IATA2)
     }
 
     // Check if the airports are already connected
-    if (airports[IATA1].findConnection(&airports[IATA2]))
+    if (airports[IATA1].findNeighbor(&airports[IATA2]))
     {
         // Print an error message
         cout << "The airports are already connected" << endl;
@@ -179,7 +213,7 @@ void Graph::removeConnection(string IATA1, string IATA2)
     }
 
     // Check if the airports are NOT connected
-    if (!airports[IATA1].findConnection(&airports[IATA2]))
+    if (!airports[IATA1].findNeighbor(&airports[IATA2]))
     {
         // Print an error message
         cout << "The airports are not connected" << endl;
@@ -189,6 +223,42 @@ void Graph::removeConnection(string IATA1, string IATA2)
     // Remove the connection from the graph
     airports[IATA1].removeConnection(&airports[IATA2]);
     airports[IATA2].removeConnection(&airports[IATA1]);
+}
+
+/**
+ * @brief Check if two airports are neighbors
+ *
+ * @param IATA1
+ * @param IATA2
+ * @return true
+ * @return false
+ */
+
+bool Graph::areNeighbors(string IATA1, string IATA2)
+{
+    // Check if the airports are NOT in the graph
+    if (!findAirport(IATA1) || !findAirport(IATA2))
+    {
+        // Print an error message
+        cout << "The airports are not in the graph" << endl;
+        return false;
+    }
+
+    // Check if the airports are the same
+    if (IATA1 == IATA2)
+    {
+        // Print an error message
+        cout << "The airports are the same" << endl;
+        return false;
+    }
+
+    // Check if the airports are connected
+    if (airports[IATA1].findNeighbor(&airports[IATA2]))
+    {
+        return true;
+    }
+
+    return false;
 }
 
 // Print methods

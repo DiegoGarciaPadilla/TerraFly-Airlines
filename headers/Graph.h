@@ -36,11 +36,13 @@ public:
 
     // Methods
 
+    void initialize();                     // Initialize the graph
     bool findAirport(string);              // Find an airport in the graph
     void addAirport(Airport);              // Add an airport to the graph
     void removeAirport(string);            // Remove an airport from the graph
     void addConnection(string, string);    // Add a connection to the graph
     void removeConnection(string, string); // Remove a connection from the graph
+    bool areNeighbors(string, string);     // Check if two airports are neighbors
 
     // Print methods
 
