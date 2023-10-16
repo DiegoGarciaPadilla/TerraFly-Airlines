@@ -19,6 +19,8 @@
 using namespace std;
 
 #include "../headers/Graph.h" // Include the header file
+#include "Sorts.cpp"          // Include the Sort class
+#include "CSVReader.cpp"      // Include the CSVReader class
 
 // Constructor
 
@@ -271,14 +273,30 @@ bool Graph::areNeighbors(string IATA1, string IATA2)
 
 string Graph::toString()
 {
-    // Create the string
-    string str = "";
+    // Get Sort class
+    Sorts<Airport> s;
+
+    // Create the vector
+    vector<Airport> v;
 
     // Traverse the airports
     for (auto it = airports.begin(); it != airports.end(); it++)
     {
+        // Add the airport to the vector
+        v.push_back(it->second);
+    }
+
+    // Sort the vector
+    s.sort(v);
+
+    // Create the string
+    string str = "";
+
+    // Traverse the sorted vector
+    for (int i = 0; i < v.size(); i++)
+    {
         // Add the airport to the string
-        str += it->second.toString() + "\n";
+        str += v[i].toString() + "\n";
     }
 
     return str;
