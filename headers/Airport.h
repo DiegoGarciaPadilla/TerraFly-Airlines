@@ -70,7 +70,7 @@ public:
 
     void addConnection(Airport *);    // Add a connection to the airport
     void removeConnection(Airport *); // Remove a connection from the airport
-    bool findConnection(Airport *);   // Find a connection in the airport
+    bool findNeighbor(Airport *);     // Find a neighbor of the airport
 
     // Operators
 

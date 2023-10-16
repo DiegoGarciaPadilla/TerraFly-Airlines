@@ -339,14 +339,14 @@ void Airport::removeConnection(Airport *airport)
 }
 
 /**
- * @brief Find a connection in the airport
+ * @brief Find a neighbor of the airport
  *
  * @param airport
  * @return true
  * @return false
  */
 
-bool Airport::findConnection(Airport *airport)
+bool Airport::findNeighbor(Airport *airport)
 {
     // Check if the airport is connected
     return connections.find(airport) != connections.end();
