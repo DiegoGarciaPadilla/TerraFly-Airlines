@@ -63,14 +63,14 @@ public:
 
     // Methods
 
-    string toString();            // Convert the object to a string
-    double distanceTo(Airport &); // Calculate the distance to another airport
+    string toString();            // Convert the object to a string (O(1))
+    double distanceTo(Airport &); // Calculate the distance to another airport (O(1))
 
     // Graph methods
 
-    void addConnection(Airport *);    // Add a connection to the airport
-    void removeConnection(Airport *); // Remove a connection from the airport
-    bool findNeighbor(Airport *);     // Find a neighbor of the airport
+    void addConnection(Airport *);    // Add a connection to the airport (O(1))
+    void removeConnection(Airport *); // Remove a connection from the airport (O(1))
+    bool findNeighbor(Airport *);     // Find a neighbor of the airport (O(1))
 
     // Operators
 

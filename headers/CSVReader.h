@@ -26,7 +26,7 @@ public:
     CSVReader(); // Construct a new CSVReader:: CSVReader object
 
     // Methods
-    vector<vector<string>> read(string, char); // Read a CSV file and return a vector of vectors of strings
+    vector<vector<string>> read(string, char); // Read a CSV file and return a vector of vectors of strings (O(n))
 };
 
 #endif // CSVREADER_H
