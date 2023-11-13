@@ -12,6 +12,12 @@ Se implementó la clase `Graph` y `CSVReader`. La clase `Graph` implementa la es
 2. Creación de la clase `CSVReader`.
 3. Modificación de la clase `Airport` para que tenga un atributo `connections` que es un vector de objetos de la clase `Airport`, además de metodos para agregar y eliminar conexiones con otros aeropuertos.
 
+## Descripción del avance 3
+Se implementó la estructura de lista ligada en la clase de `LinkedList`, la cual será útil para realizar algunas operaciones en los grafos. Por ejemplo: como una salida para el algoritmo de Dijkstra, para almacenar los aeropuertos que se visitan en el algoritmo de Dijkstra, etc.
+
+### Cambios sobre el segundo avance
+1. Creación de la clase `LinkedList`, con la clase `LLNode` como clase anidada.
+
 ## Instrucciones para compilar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
@@ -36,6 +42,7 @@ Por el momento, el programa solo imprime en la terminal la información de los a
 ### SICT0301: Evalúa los componentes
 #### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
 Considero que he desarrollado esta competencia porque he analizado la complejidad de los algoritmos de ordenamiento que he usado en el programa. Por ejemplo, en el caso del algoritmo de ordenamiento merge sort, he analizado su complejidad en el peor caso, en el mejor caso y en el caso promedio. siendo O(n log n) en el peor caso, O(n log n) en el mejor caso y O(n log n) en el caso promedio.
+**NOTA:** El análisis de complejidad está en los comentarios de los headers correspondientes
 
 #### Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
 Considero que he desarrollado esta competencia porque he analizado la complejidad de las estructuras de datos que he usado en el programa y los métodos que he implementado para manipularlas.
@@ -53,3 +60,13 @@ La clase `Graph` contiene métodos para consultar información de las estructura
 
 #### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
 La clase `CSVReader` contiene métodos para leer archivos CSV y cargar los datos a las estructuras de manera correcta.
+
+### SICT0303: Implementa acciones científicas
+#### Implementa mecanismos para consultar información de las estructras correctos.
+En el programa, se implementan mecanismos para consultar información de las estructuras de manera correcta. Por ejemplo, la clase `Graph` contiene métodos para consultar información de las estructuras de manera correcta, por ejemplo, imprimir la información de los aeropuertos y las conexiones entre aeropuertos. Además, se planea implementar el algoritmo de Dijkstra para encontrar la ruta más corta entre dos aeropuertos.
+
+#### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
+En el programa, se implementan mecanismos para leer archivos CSV y cargar los datos a las estructuras de manera correcta. Por ejemplo, la clase `CSVReader` contiene métodos para leer archivos CSV y cargar los datos a las estructuras de manera correcta.
+
+### Implementa mecanismos de escritura de archivos para guardar los datos  de las estructuras de manera correcta
+Por el momento, el programa no implementa mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta. Sin embargo, se planea implementar mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta, por ejemplo, para guardar las reservaciones de los usuarios.
