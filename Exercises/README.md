@@ -12,7 +12,7 @@ Debes resolver este problema sin utilizar la función de ordenación de la bibli
 
 ### Solución
 
-- [Video de la solución](./SortColors.mp4)
+- [Video de la solución](https://drive.google.com/file/d/1HVYVqKja9h73tBEzdF8Dc2eP4biR4m05/view?usp=sharing)
 - [Link a la solución](https://leetcode.com/problems/sort-colors/submissions/1107600649/)
 
 ## 2. Swap Nodes In Pairs (Estructura de datos lineal)
@@ -21,7 +21,7 @@ Dada una lista enlazada, intercambia cada dos nodos adyacentes y devuelve su cab
 
 ### Solución
 
-- [Video de la solución](./SwapNodesInPairs.mp4)
+- [Video de la solución](https://drive.google.com/file/d/1lYWrXxK1zvmOOrRAoMRi6RDHNOpHLN_7/view?usp=drive_link)
 - [Link a la solución](https://leetcode.com/problems/swap-nodes-in-pairs/submissions/1106414226)
 
 ## 3. Validate Binary Search Tree (BST)
@@ -36,6 +36,6 @@ Un **BST válido** se define como sigue:
 
 ### Solución
 
-- [Video de la solución](./ValidateBinarySearchTree.mp4)
+- [Video de la solución](https://drive.google.com/file/d/1ZKSDzPAuPr9EgrCm8z4UKbYr8y8jQSo-/view?usp=drive_link)
 - [Link a la solución](https://leetcode.com/problems/validate-binary-search-tree/submissions/1107664176)
 
