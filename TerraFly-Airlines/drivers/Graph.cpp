@@ -19,8 +19,8 @@
 using namespace std;
 
 #include "../headers/Graph.h" // Include the header file
-#include "Sorts.cpp"          // Include the Sort class
-#include "CSVReader.cpp"      // Include the CSVReader class
+#include "./Sorts.cpp"          // Include the Sort class
+#include "./HandleCSV.cpp"      // Include the HandleCSV class
 
 // Constructor
 
@@ -59,11 +59,11 @@ Graph::~Graph()
 
 void Graph::initialize()
 {
-    // Get CSVRreader object
-    CSVReader reader;
+    // Get HandleCSV class
+    HandleCSV csv;
 
     // Get data from CSV file
-    vector<vector<string>> data = reader.read("data/airports.csv", ',');
+    vector<vector<string>> data = csv.readCSV("data/airports.csv", ',');
 
     // Fill the vector of airports
     for (int i = 0; i < data.size(); i++)
@@ -76,7 +76,7 @@ void Graph::initialize()
     }
 
     // Get connections from CSV file
-    vector<vector<string>> cData = reader.read("data/connections.csv", ',');
+    vector<vector<string>> cData = csv.readCSV("data/connections.csv", ',');
 
     // Fill the connections
     for (int i = 0; i < cData.size(); i++)

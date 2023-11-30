@@ -1,7 +1,7 @@
 /**
- * @file CSVReader.cpp
+ * @file HandleCSV.cpp
  * @author DiegoGarciaPadilla
- * @brief Implementation of the CSVReader class
+ * @brief Implementation of the HandleCSV class
  * @version 0.1
  * @date 2023-10-12
  * 
@@ -9,8 +9,8 @@
  * 
  */
 
-#ifndef CSVREADER_CPP
-#define CSVREADER_CPP
+#ifndef HANDLECSV_CPP
+#define HANDLECSV_CPP
 
 #include <iostream>
 #include <vector>
@@ -19,7 +19,7 @@
 
 using namespace std;
 
-#include "../headers/CSVReader.h" // Include the header file
+#include "../headers/HandleCSV.h" // Include the header file
 
 // Constructors
 
@@ -28,7 +28,7 @@ using namespace std;
  *
  */
 
-CSVReader::CSVReader() {}
+HandleCSV::HandleCSV() {}
 
 // Methods
 
@@ -40,7 +40,7 @@ CSVReader::CSVReader() {}
  * @return vector<vector<string>>
  */
 
-vector<vector<string>> CSVReader::read(string filename, char separator)
+vector<vector<string>> HandleCSV::readCSV(const string filename, char separator = ',')
 {
     // Create a vector of vector of strings
 
@@ -94,4 +94,39 @@ vector<vector<string>> CSVReader::read(string filename, char separator)
     return data;
 }
 
-#endif // CSVREADER_CPP
+/**
+ * @brief Write a CSV file
+ *
+ * @param filename
+ * @param data
+ */
+
+void HandleCSV::writeCSV(const string &filename, const vector<vector<string>> &data)
+{
+    // Create a file
+    ofstream file(filename);
+
+    // Check if the file is open
+
+    if (!file.is_open())
+    {
+        cout << "Error opening file" << endl;
+        return;
+    }
+
+    // Write the data
+
+    for (auto row : data)
+    {
+        for (auto word : row)
+        {
+            file << word << ",";
+        }
+        file << "\n";
+    }
+
+    // Close the file
+    file.close();
+}
+
+#endif // HANDLECSV_CPP
