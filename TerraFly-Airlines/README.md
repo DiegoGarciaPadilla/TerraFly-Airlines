@@ -18,6 +18,13 @@ Se implementó la estructura de lista ligada en la clase de `LinkedList`, la cua
 ### Cambios sobre el segundo avance
 1. Creación de la clase `LinkedList`, con la clase `LLNode` como clase anidada.
 
+## Entrega final
+En esta versión del proyecto, se implementó la funcionalidad de que los usuarios puedan reservar vuelos, limitando que sólo se pueda reservar un vuelo a otro aeropuerto que tenga conexión con el aeropuerto de origen. Además, los vuelos se pueden guardar en un archivo CSV.
+
+### Cambios sobre el tercer avance avance
+1. Cambiar la clase `CSVReader` por la clase `HandleCSV`: Esto se hizo para que la clase `HandleCSV` sea más general y pueda leer y escribir archivos CSV.
+2. Implementación de la funcionalidad de que los usuarios puedan reservar vuelos: En el archivo `main.cpp`, se implementó la funcionalidad de que los usuarios puedan reservar vuelos, limitando que sólo se pueda reservar un vuelo a otro aeropuerto que tenga conexión con el aeropuerto de origen. Además, los vuelos se pueden guardar en un archivo CSV.
+
 ## Instrucciones para compilar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
@@ -35,7 +42,7 @@ Ejecuta el siguiente comando en la terminal:
 El programa lee dos archivos CSV: `airports.csv` y `connections.csv`. El archivo `airports.csv` contiene información sobre los aeropuertos y el archivo `connections.csv` contiene información sobre las conexiones entre aeropuertos.
 
 ## Descripción de las salidas del avance de proyecto
-Por el momento, el programa solo imprime en la terminal la información de los aeropuertos y las conexiones entre aeropuertos.
+Cuando el usuario reserva un vuelo, el programa imprime la información del vuelo reservado. Además, el programa guarda la información del vuelo reservado en un archivo CSV llamado `flights.csv`.
 
 ## Desarrollo de competencias
 
@@ -69,4 +76,4 @@ En el programa, se implementan mecanismos para consultar información de las est
 En el programa, se implementan mecanismos para leer archivos CSV y cargar los datos a las estructuras de manera correcta. Por ejemplo, la clase `CSVReader` contiene métodos para leer archivos CSV y cargar los datos a las estructuras de manera correcta.
 
 ### Implementa mecanismos de escritura de archivos para guardar los datos  de las estructuras de manera correcta
-Por el momento, el programa no implementa mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta. Sin embargo, se planea implementar mecanismos de escritura de archivos para guardar los datos de las estructuras de manera correcta, por ejemplo, para guardar las reservaciones de los usuarios.
+En el programa, se implementan mecanismos para guardar los datos de las estructuras de manera correcta. Por ejemplo, la clase `HandleCSV` contiene métodos para guardar los datos de las estructuras de manera correcta.
