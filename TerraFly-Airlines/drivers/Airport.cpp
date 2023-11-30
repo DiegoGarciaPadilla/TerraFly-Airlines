@@ -271,8 +271,8 @@ string Airport::toString()
 double Airport::distanceTo(Airport &destiny)
 {
     // Get the latitude and longitude of the destiny
-    double lat2 = destiny.getLatitude();
-    double lon2 = destiny.getLongitude();
+    double lat2 = destiny.getLatitude() * M_PI / 180;
+    double lon2 = destiny.getLongitude() * M_PI / 180;
 
     // Convert the latitude and longitude to radians
     double lat1 = latitude * M_PI / 180;
