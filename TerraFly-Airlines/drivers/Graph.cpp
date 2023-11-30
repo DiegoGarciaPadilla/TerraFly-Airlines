@@ -263,6 +263,102 @@ bool Graph::areNeighbors(string IATA1, string IATA2)
     return false;
 }
 
+/**
+ * @brief Get an airport from the graph
+ *
+ * @param IATA
+ * @return Airport*
+ */
+
+Airport *Graph::getAirport(string IATA)
+{
+    // Check if the airport is NOT in the graph
+    if (!findAirport(IATA))
+    {
+        // Print an error message
+        cout << "The airport is not in the graph" << endl;
+        return nullptr;
+    }
+
+    return &airports[IATA];
+}
+
+/**
+ * @brief Get the distance between two airports
+ *
+ * @param IATA1
+ * @param IATA2
+ * @return double
+ */
+
+double Graph::getDistance(string IATA1, string IATA2)
+{
+    // Check if the airports are NOT in the graph
+    if (!findAirport(IATA1) || !findAirport(IATA2))
+    {
+        // Print an error message
+        cout << "The airports are not in the graph" << endl;
+        return -1;
+    }
+
+    // Check if the airports are the same
+    if (IATA1 == IATA2)
+    {
+        // Print an error message
+        cout << "The airports are the same" << endl;
+        return -1;
+    }
+
+    // Check if the airports are NOT connected
+    if (!airports[IATA1].findNeighbor(&airports[IATA2]))
+    {
+        // Print an error message
+        cout << "The airports are not connected" << endl;
+        return -1;
+    }
+
+    // Get the distance
+    return airports[IATA1].distanceTo(airports[IATA2]);
+}
+
+/**
+ * @brief Get the price between two airports
+ *
+ * @param IATA1
+ * @param IATA2
+ * @return double
+ */
+
+double Graph::getPrice(string IATA1, string IATA2)
+{
+    // Check if the airports are NOT in the graph
+    if (!findAirport(IATA1) || !findAirport(IATA2))
+    {
+        // Print an error message
+        cout << "The airports are not in the graph" << endl;
+        return -1;
+    }
+
+    // Check if the airports are the same
+    if (IATA1 == IATA2)
+    {
+        // Print an error message
+        cout << "The airports are the same" << endl;
+        return -1;
+    }
+
+    // Check if the airports are NOT connected
+    if (!airports[IATA1].findNeighbor(&airports[IATA2]))
+    {
+        // Print an error message
+        cout << "The airports are not connected" << endl;
+        return -1;
+    }
+
+    // Get the distance
+    return airports[IATA1].distanceTo(airports[IATA2]) * 0.1;
+}
+
 // Print methods
 
 /**
@@ -297,6 +393,95 @@ string Graph::toString()
     {
         // Add the airport to the string
         str += v[i].toString() + "\n";
+    }
+
+    return str;
+}
+
+/**
+ * @brief List all the airports in the graph
+ *
+ * @return string
+ */
+
+string Graph::listAirports()
+{
+    // Get Sort class
+    Sorts<Airport> s;
+
+    // Create the vector
+    vector<Airport> v;
+
+    // Traverse the airports
+    for (auto it = airports.begin(); it != airports.end(); it++)
+    {
+        // Add the airport to the vector
+        v.push_back(it->second);
+    }
+
+    // Sort the vector
+    s.sort(v);
+
+    // Create the string
+    string str = "";
+
+    // Traverse the sorted vector
+    for (int i = 0; i < v.size(); i++)
+    {
+        // Add the airport to the string
+        str += to_string(i + 1) + ". " + v[i].getName() + " (" + v[i].getIATA() + ")\n";
+    }
+
+    return str;
+}
+
+/**
+ * @brief List all the connections of an airport
+ *
+ * @param IATA
+ * @return string
+ */
+
+string Graph::listConnections(string IATA)
+{
+    // Check if the airport is NOT in the graph
+    if (!findAirport(IATA))
+    {
+        // Print an error message
+        cout << "The airport is not in the graph" << endl;
+        return "";
+    }
+
+    // Get the airport
+    Airport airport = airports[IATA];
+
+    // Get the connections
+    unordered_map<Airport *, double> connections = airport.getConnections();
+
+    // Get Sort class
+    Sorts<Airport> s;
+
+    // Create the vector
+    vector<Airport> v;
+
+    // Traverse the connections
+    for (auto it = connections.begin(); it != connections.end(); it++)
+    {
+        // Add the airport to the vector
+        v.push_back(*it->first);
+    }
+
+    // Sort the vector
+    s.sort(v);
+
+    // Create the string
+    string str = "";
+
+    // Traverse the sorted vector
+    for (int i = 0; i < v.size(); i++)
+    {
+        // Add the airport to the string
+        str += to_string(i + 1) + ". " + v[i].getName() + " (" + v[i].getIATA() + ")\n";
     }
 
     return str;

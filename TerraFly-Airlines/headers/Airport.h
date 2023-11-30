@@ -64,6 +64,7 @@ public:
     // Methods
 
     string toString();            // Convert the object to a string (O(1))
+    string enlistConnections();   // List all the connections of the airport (O(n))
     double distanceTo(Airport &); // Calculate the distance to another airport (O(1))
 
     // Graph methods

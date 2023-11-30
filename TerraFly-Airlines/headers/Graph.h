@@ -44,9 +44,15 @@ public:
     void removeConnection(string, string); // Remove a connection from the graph (O(1))
     bool areNeighbors(string, string);     // Check if two airports are neighbors (O(1))
 
+    Airport *getAirport(string); // Get an airport from the graph (O(1))
+    double getDistance(string, string); // Get the distance between two airports (O(1))
+    double getPrice(string, string);    // Get the price between two airports (O(1))
+
     // Print methods
 
-    string toString(); // Convert the object to a string
+    string toString();     // Convert the object to a string
+    string listAirports(); // List all the airports in the graph
+    string listConnections(string); // List all the connections of an airport
 
     // Friend classes
 

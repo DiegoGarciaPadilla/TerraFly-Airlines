@@ -262,6 +262,30 @@ string Airport::toString()
 }
 
 /**
+ * @brief List all the connections of the airport
+ *
+ * @return string
+ */
+
+string Airport::enlistConnections()
+{
+    // Create the string
+    string str = "";
+
+    // List number
+    int i = 1;
+
+    // Add the connections
+    for (auto connection : connections)
+    {
+        str += to_string(i) + ". " + connection.first->getName() + " (" + connection.first->getIATA() + ")\n";
+    }
+
+    // Return the string
+    return str;
+}
+
+/**
  * @brief Calculate the distance to another airport
  *
  * @param destiny
